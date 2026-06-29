@@ -20,6 +20,48 @@
 
 ---
 
+## Conda 环境规则
+
+当前项目使用 conda 环境 `odegs`。
+
+运行任何 Python 命令前，必须确认：
+
+```bash
+which python
+echo $CONDA_DEFAULT_ENV
+echo $CONDA_PREFIX
+python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+```
+期望结果：
+/environment/miniconda3/envs/odegs/bin/python
+CONDA_DEFAULT_ENV=odegs
+CONDA_PREFIX=/environment/miniconda3/envs/odegs
+torch.cuda.is_available() == True
+
+如果 shell 变量显示为 base，但 Python 指向 odegs，需要在文档中标记为环境不一致，不要据此判断真实训练环境不可用。
+
+优先使用：
+```bash
+source /environment/miniconda3/etc/profile.d/conda.sh
+conda activate odegs
+```
+
+或直接使用：
+```bash
+/environment/miniconda3/envs/odegs/bin/python
+```
+
+
+然后提交：
+
+```bash
+git add AGENTS.md
+git commit -m "Add conda environment rules for agents"
+env -u LD_LIBRARY_PATH -u LD_PRELOAD GIT_SSH_COMMAND="/usr/bin/ssh -i /home/featurize/work/.ssh/id_rsa -o IdentitiesOnly=yes" /usr/bin/git push
+```
+
+---
+
 ## 2. 当前项目阶段
 
 当前项目处于 ODE-GS 复现阶段，而不是方法创新阶段。
