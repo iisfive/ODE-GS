@@ -51,3 +51,37 @@ result*
 sudo_gt/
 log*
 *output*
+# data / outputs
+data/
+datasets/
+output/
+outputs/
+logs/
+wandb/
+runs/
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.mp4
+*.avi
+*.mov
+*.png
+*.jpg
+*.jpeg
+*.npy
+*.npz
+
+# python/cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.cache/
+
+# env
+.env
+.venv/
+*.egg-info/
+
+# system
+.DS_Store
